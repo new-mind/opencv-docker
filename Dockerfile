@@ -6,7 +6,8 @@ RUN             apt-get update && \
                 apt-get -y clean
 RUN             wget https://bootstrap.pypa.io/get-pip.py && python2.7 get-pip.py
 RUN             pip install numpy
+RUN             mkdir /opencv
+WORKDIR         /opencv
 
 RUN             wget https://github.com/Itseez/opencv/archive/3.0.0-rc1.zip && unzip 3.0.0-rc1.zip
-RUN             cd opencv-3.0.0-rc1 && \
-                cmake . && make && make install && cd .. && rm -r opencv-3.0.0-rc1 3.0.0-rc1.zip
+RUN             cd opencv-3.0.0-rc1 && cmake . && make && make install
